@@ -1,0 +1,40 @@
+<div id="main" role="main" class="animated fadeInDown">
+
+	<section id="form"><!--form-->
+		<div id="content" class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>
+						<form action="#" class="smart-form client-form">
+							<input type="text" placeholder="Name" name="email" data-smart-validate-input="" data-required="" data-email="" data-message-required="Please enter your email address" data-message-email="Please enter a VALID email address" />
+							<input type="email" placeholder="Email Address" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Please enter your email password" />
+							<span>
+								<input type="checkbox" class="checkbox" checked> 
+								Keep me signed in
+							</span>
+							<button type="button" (click)="login($event)"  class="btn btn-default">Login</button>
+            </form>
+            <div class="note">
+                <a routerLink="/home/forgot-password">Forgot password?</a>
+              </div>
+					</div><!--/login form-->
+				</div>
+				<div class="col-sm-1">
+					<h2 class="or">OR</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>New User Signup!</h2>
+						<form action="#">
+							<input type="text" placeholder="Name"/>
+							<input type="email" placeholder="Email Address"/>
+							<input type="password" placeholder="Password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Please enter your email password"/>
+							<button type="button" (click)="login($event)"  class="btn btn-default">Signup</button>
+						</form>
+					</div><!--/sign up form-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+</div>
