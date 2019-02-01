@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router";
+import { e } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-fheader',
@@ -9,23 +10,27 @@ import {Router} from "@angular/router";
   ]
 })
 export class FheaderComponent implements OnInit {
-  loggedin = false;
-  constructor(private router: Router) {
-    if(localStorage.getItem('logged') === 'yes'){
-      this.loggedin = true;
-    }
-   }
+  loggedin = true;  
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.checklogin();
   }
-
-  unlock(event){
+  checklogin() {
+    if (localStorage.getItem('logged') === 'yes') {
+      // console.log('hit by login');
+      this.loggedin = true;
+    } else {
+      this.loggedin = false;
+    }
+  }
+  unlock(event) {
     event.preventDefault();
     this.router.navigate(['/dashboard'])
   }
-  logout(){
-    this.loggedin=false;
+  logout() {
+    this.loggedin = false;
     localStorage.removeItem('logged');
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home/login'])
   }
 }

@@ -32,6 +32,11 @@ export const routes:Routes = [
     path: 'dashboard',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   }
+  ,
+  {
+    path: 'order',
+    loadChildren: './orders/orders.module#OrdersModule'
+  }
 ];
 
 export const routing = RouterModule.forChild(routes);

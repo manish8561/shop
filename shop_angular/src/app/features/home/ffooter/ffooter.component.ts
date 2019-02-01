@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
   selector: 'app-ffooter',
   templateUrl: './ffooter.component.html',
   styleUrls: [
-    './../home.component.css'
+    './ffooter.component.css'
   ]
 })
 export class FfooterComponent implements OnInit {
@@ -19,7 +19,4 @@ export class FfooterComponent implements OnInit {
     event.preventDefault();
     this.router.navigate(['/dashboard'])
   }
-
-
-
 }

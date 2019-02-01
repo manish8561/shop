@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { FheaderComponent } from "../../../features/home/fheader/fheader.component";
 
 @Component({
   selector: 'app-home-layout',
@@ -16,6 +17,8 @@ import { Router, NavigationEnd } from '@angular/router';
 export class HomeLayoutComponent implements OnInit {
   loginpage = false;
   showslider = true;
+  loggedin = false;
+  @ViewChild(FheaderComponent) public fheaderComponent: FheaderComponent;
   constructor(private router: Router) {
     if (this.router.url.indexOf('/login') > -1) {
       this.loginpage = true;
@@ -34,7 +37,7 @@ export class HomeLayoutComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log(event.url);
+        // console.log(event.url);
         if (event.url.indexOf('/login') > -1) {
           this.loginpage = true;
         } else {
@@ -46,11 +49,11 @@ export class HomeLayoutComponent implements OnInit {
           } else {
             this.showslider = true;
           }
+          this.fheaderComponent.checklogin();
         } else { 
           this.showslider = false; 
         }
       }
     });
-  }
-
+  }  
 }
