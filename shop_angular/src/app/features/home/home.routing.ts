@@ -1,6 +1,7 @@
 
 import {ModuleWithProviders} from "@angular/core"
 import {Routes, RouterModule} from "@angular/router";
+import {ContactComponent} from "./contact/contact.component";
 
 
 export const routes:Routes = [
@@ -30,13 +31,19 @@ export const routes:Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
-  }
-  ,
+    loadChildren: './dashboard/dashboard.module#DashboardModule',
+    data: { pageTitle: "Dashboard" }
+  },
   {
     path: 'order',
-    loadChildren: './orders/orders.module#OrdersModule'
+    loadChildren: './orders/orders.module#OrdersModule',
+    data: { pageTitle: "User Orders" }
+  },
+  {
+    path:'contact',
+    component:ContactComponent
   }
+  
 ];
 
 export const routing = RouterModule.forChild(routes);

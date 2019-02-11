@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -8,21 +8,26 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styles: [ './../home.component.css']
+  styles: ['./../home.component.css']
 })
 export class DashboardComponent implements OnInit {
- 
+
 
   bsModalRef: BsModalRef;
   public termsAgreed = false
 
   constructor(
-    private router: Router,  
-    private modalService: BsModalService) {}
- 
-   ngOnInit() {}
+    private router: Router,
+    private modalService: BsModalService) {
+      if (localStorage.getItem('logged') !== 'yes') {
+        // console.log('hit by login');
+        this.router.navigate(['/home/login'])
+      }
+  }
 
-  register(event){
+  ngOnInit() { }
+
+  register(event) {
     event.preventDefault();
     this.router.navigate(['/dashboard'])
   }
@@ -32,12 +37,12 @@ export class DashboardComponent implements OnInit {
     this.bsModalRef = this.modalService.show(template);
   }
 
-  onTermsAgree(){
+  onTermsAgree() {
     this.termsAgreed = true
     this.bsModalRef.hide()
   }
 
-  onTermsClose(){
+  onTermsClose() {
     this.bsModalRef.hide()
   }
 

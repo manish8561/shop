@@ -3,11 +3,11 @@ import { Router } from "@angular/router";
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
   styleUrls: ['./../home.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ContactComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(event) {
+  contact(event) {
     //console.log(event);
     event.preventDefault();
     localStorage.setItem('logged', 'yes');

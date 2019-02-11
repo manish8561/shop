@@ -18,7 +18,12 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private router: Router,  
-    private modalService: BsModalService) {}
+    private modalService: BsModalService) {
+      /* if (localStorage.getItem('logged') !== 'yes') {
+        // console.log('hit by login');
+        this.router.navigate(['/home/login'])
+      }  */
+    }
  
    ngOnInit() {}
 
