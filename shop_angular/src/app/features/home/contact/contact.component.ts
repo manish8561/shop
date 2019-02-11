@@ -10,13 +10,9 @@ import { Router } from "@angular/router";
 export class ContactComponent implements OnInit {
   constructor(private router: Router) { }
 
-  ngOnInit() {
-    if (localStorage.getItem('logged') === 'yes') {
-      this.router.navigate(['/home/dashboard'])
-    }
-  }
+  ngOnInit() { }
 
-  contact(event) {
+  save(event) {
     //console.log(event);
     event.preventDefault();
     localStorage.setItem('logged', 'yes');
