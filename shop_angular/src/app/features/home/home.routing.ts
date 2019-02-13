@@ -1,10 +1,11 @@
 
-import {ModuleWithProviders} from "@angular/core"
-import {Routes, RouterModule} from "@angular/router";
-import {ContactComponent} from "./contact/contact.component";
+import { ModuleWithProviders } from "@angular/core"
+import { Routes, RouterModule } from "@angular/router";
+import { ContactComponent } from "./contact/contact.component";
+import { ForgotComponent } from "./forgot/forgot.component";
+import { NotfoundComponent } from './errors/notfound.component';
 
-
-export const routes:Routes = [
+export const routes: Routes = [
   {
     path: '',
     loadChildren: './main/main.module#MainModule'
@@ -23,7 +24,8 @@ export const routes:Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren: './forgot/forgot.module#ForgotModule'
+    component: ForgotComponent,
+    data: { pageTitle: 'Forget Password' }
   },
   {
     path: 'locked',
@@ -40,10 +42,15 @@ export const routes:Routes = [
     data: { pageTitle: "User Orders" }
   },
   {
-    path:'contact',
-    component:ContactComponent
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'notfound',
+    component: NotfoundComponent,
+    data: { title: '404 Error' }
   }
-  
+
 ];
 
 export const routing = RouterModule.forChild(routes);

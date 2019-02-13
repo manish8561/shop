@@ -3,17 +3,21 @@
 	<section id="form"><!--form-->
 		<div id="content" class="container">
 			<div class="row">
+				<div class="col-md-8 col-sm-offset-1"><flash-messages></flash-messages></div><div class="col-md-3"></div>
+			</div>
+
+			<div class="row">					
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#" class="smart-form client-form">
-							<input type="text" placeholder="Name" name="email" data-smart-validate-input="" data-required="" data-email="" data-message-required="Please enter your email address" data-message-email="Please enter a VALID email address" />
-							<input type="email" placeholder="Email Address" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Please enter your email password" />
+						<form #loginForm="ngForm" class="smart-form client-form" (ngSubmit)="login(loginForm)" novalidate="novalidate" [saBootstrapValidator]="validatorOptions" >
+							<input type="email" placeholder="Email Address" name="email"  required="required" ngModel/>
+							<input type="password" placeholder="Password" name="password"  required="required" ngModel/>
 							<span>
-								<input type="checkbox" class="checkbox" checked> 
+								<input type="checkbox" class="checkbox" checked name="remember" ngModel> 
 								Keep me signed in
 							</span>
-							<button type="button" (click)="login($event)"  class="btn btn-default">Login</button>
+							<button type="submit" class="btn btn-default">Login</button>
             </form>
             <div class="note">
                 <a routerLink="/home/forgot-password">Forgot password?</a>
@@ -26,11 +30,11 @@
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
 						<h2>New User Signup!</h2>
-						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-							<input type="password" placeholder="Password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Please enter your email password"/>
-							<button type="button" (click)="login($event)"  class="btn btn-default">Signup</button>
+						<form #registerForm="ngForm" class="register-form" (ngSubmit)="register(registerForm)" novalidate="novalidate" [saBootstrapValidator]="validatorOptions2" >
+							<input type="text" placeholder="Name" name="name" required="required" ngModel/>
+							<input type="email" placeholder="Email Address" name="email" required="required" ngModel/>
+							<input type="password" placeholder="Password" name="password" required="required" ngModel/>
+							<button type="submit" class="btn btn-default">Signup</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>
