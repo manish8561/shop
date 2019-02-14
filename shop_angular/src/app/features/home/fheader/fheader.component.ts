@@ -30,6 +30,9 @@ export class FheaderComponent implements OnInit {
   logout() {
     this.loggedin = false;
     localStorage.removeItem('logged');
-    this.router.navigate(['/home/login'])
+    this.router.navigate(['/home/login']);
+  }
+  refresh(){
+    location.reload();
   }
 }

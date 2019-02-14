@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
       this._flashMessagesService.show('Email or password is invalid!', { cssClass: 'alert-danger', timeout: 2000 });
     } else {
       localStorage.setItem('logged', 'yes');
-      this.router.navigate(['home/dashboard']);
+      this.router.navigate(['/home/dashboard']);
     }
   }
   register(form){
@@ -110,6 +110,7 @@ export class LoginComponent implements OnInit {
     } else {
       localStorage.setItem('logged', 'yes');
       this.router.navigate(['/home/dashboard']);
+      
     }
   }
 

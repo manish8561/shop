@@ -34,14 +34,14 @@ const routes: Routes = [
         data: { pageTitle: "Dashboard" }
       },
 
-            {
+      {
         path: "e-commerce",
         loadChildren: "./features/e-commerce/e-commerce.module#ECommerceModule",
         data: { pageTitle: "E-commerce" }
       },
 
 
-            {
+      {
         path: "forms",
         loadChildren: "./features/forms/forms-showcase.module#FormsShowcaseModule",
         data: { pageTitle: "Forms" }
@@ -61,7 +61,7 @@ const routes: Routes = [
         data: { pageTitle: "Maps" }
       },
 
-            {
+      {
         path: "miscellaneous",
         loadChildren:
           "./features/miscellaneous/miscellaneous.module#MiscellaneousModule",
@@ -85,13 +85,13 @@ const routes: Routes = [
         data: { pageTitle: "Tables" }
       },
 
-            {
+      {
         path: "ui",
         loadChildren: "./features/ui-elements/ui-elements.module#UiElementsModule",
         data: { pageTitle: "Ui" }
       },
 
-            {
+      {
         path: "widgets",
         loadChildren:
           "./features/widgets/widgets-showcase.module#WidgetsShowcaseModule",
@@ -111,12 +111,10 @@ const routes: Routes = [
     loadChildren: "./features/home/home.module#HomeModule"
   },
   { path: "**", redirectTo: "miscellaneous/error404" }
-
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true, enableTracing: false})],// <-- debugging purposes only
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false })],// <-- debugging purposes only
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

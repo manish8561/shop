@@ -33,6 +33,9 @@ export class ForgotComponent implements OnInit {
   constructor(private router: Router, private _flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('logged') === 'yes') {
+      this.router.navigate(['/home/dashboard'])
+    }
   }
 
   submit(form) {

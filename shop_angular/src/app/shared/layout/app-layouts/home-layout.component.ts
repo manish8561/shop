@@ -35,9 +35,9 @@ export class HomeLayoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event) => {      
       if (event instanceof NavigationEnd) {
-        // console.log(event.url);
+        // console.log(event);
         if (event.url.indexOf('/login') > -1) {
           this.loginpage = true;
         } else {
