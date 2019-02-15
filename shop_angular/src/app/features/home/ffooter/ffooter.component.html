@@ -72,7 +72,7 @@
         <div class="col-sm-3">
           <div class="address">
             <img src="assets/home/images/home/map.png" alt="" />
-            <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+            <p>Room no 12, Vill Daun, SAS Nagar Mohali, Punjab</p>
           </div>
         </div>
       </div>
@@ -133,9 +133,10 @@
         <div class="col-sm-3 col-sm-offset-1">
           <div class="single-widget">
             <h2>About Shopper</h2>
-            <form action="#" class="searchform">
-              <input type="text" placeholder="Your email address" />
+            <form #newsletter="ngForm" (ngSubmit)="save(newsletter)" class="searchform" method="POST">
+              <input  name="email" type="email" required pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" placeholder="Your email address" ngModel />             
               <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+              <p style="color:red;margin: 2px 0;" *ngIf="error">Enter valid email address.</p>
               <p>Get the most recent updates from <br />our site and be updated your self...</p>
             </form>
           </div>

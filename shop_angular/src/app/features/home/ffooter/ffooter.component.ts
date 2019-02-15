@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   ]
 })
 export class FfooterComponent implements OnInit {
-
+  error = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -18,5 +18,14 @@ export class FfooterComponent implements OnInit {
   unlock(event){
     event.preventDefault();
     this.router.navigate(['/dashboard'])
+  }
+  save(newsletter){
+    this.error = false;
+    if(newsletter.invalid){
+      this.error = true;
+    } else {
+      console.log(newsletter.value);
+    }
+    
   }
 }
