@@ -1,3 +1,24 @@
 ﻿body{
     background: #fff;
 }
+iframe > #categoryHolder{
+    display: none !important;
+}
+#amazon_search{
+    min-height:255px;
+}
+.amzn_wdgt{
+    width: 820px !important;
+}
+.wdgt_hd{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #featured_products{
+        height:auto;
+    }
+    .amzn_wdgt{
+        width: 325px !important;
+    }
+  }

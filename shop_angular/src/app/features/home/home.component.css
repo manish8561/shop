@@ -1952,3 +1952,7 @@ textarea {
 .contact-info .social-networks ul li a:hover {
     color: #FE980F;
 }
+
+#__mobileAssociatesSearchWidget_adunit_0{
+    display: none;
+}
