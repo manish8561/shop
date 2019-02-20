@@ -12,6 +12,7 @@ import { NotificationService } from "./notification.service";
 import { BodyService } from "./body.service";
 import { LayoutService } from "./layout.service";
 import { SoundService } from "./sound.service";
+import { CommonService } from './common.service';
 
 
 import * as fromVoice from './voice'
@@ -29,6 +30,7 @@ export const services = [
   BodyService,
   LayoutService,
   SoundService,
+  CommonService,
   fromVoice.VoiceControlService,
   fromVoice.VoiceRecognitionService,
 ];
@@ -44,4 +46,5 @@ export * from "./notification.service";
 export * from "./body.service";
 export * from "./layout.service";
 export * from "./sound.service";
+export * from './common.service';
 export * from "./voice";

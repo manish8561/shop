@@ -6,6 +6,7 @@ export const config: any = {
   defaultLocale: "us",
 
   API_URL: "assets/api",
+  frontend_api_url:"https://shopbackend-198646.herokuapp.com/",
 
   menu_speed: 200,
 

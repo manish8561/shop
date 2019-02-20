@@ -8,7 +8,7 @@ import { delay, map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class JsonApiService {
-
+  public login_token = '';
   constructor(private http: HttpClient) {}
 
   public fetch(url): Observable<any>{
