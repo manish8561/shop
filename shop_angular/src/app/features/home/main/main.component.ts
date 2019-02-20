@@ -33,6 +33,7 @@ export class MainComponent implements OnInit {
             child2 = that._document.getElementById('amazon_widget_IN_8001_0');
           //console.log('featured products',child2.innerHTML);
           child.innerHTML=child2.innerHTML;
+          
       }, 5000);
     }
 

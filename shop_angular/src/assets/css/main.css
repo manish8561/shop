@@ -4,6 +4,10 @@
 iframe > #categoryHolder{
     display: none !important;
 }
+
+#categoryHolder{
+    display: none !important;
+}
 #amazon_search{
     min-height:255px;
 }
