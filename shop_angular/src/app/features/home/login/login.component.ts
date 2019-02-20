@@ -1,117 +1,143 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { FlashMessagesService } from "angular2-flash-messages";
+
+import { CommonService } from "@app/core/services";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./../home.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./../home.component.css"]
 })
 export class LoginComponent implements OnInit {
   validatorOptions = {
     feedbackIcons: {
-      valid: 'glyphicon glyphicon-ok',
-      invalid: 'glyphicon glyphicon-remove',
-      validating: 'glyphicon glyphicon-refresh'
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh"
     },
     fields: {
       password: {
-        group: '.smart-form',
+        group: ".smart-form",
         validators: {
           notEmpty: {
-            message: 'The password is required'
+            message: "The password is required"
           },
           stringLength: {
             min: 8,
-            message: 'The password must be greater than 8 characters long'
+            message: "The password must be greater than 8 characters long"
           }
         }
       },
       email: {
-        group: '.smart-form',
+        group: ".smart-form",
         validators: {
           notEmpty: {
-            message: 'The email is required'
+            message: "The email is required"
           },
           emailAddress: {
-            message: 'The value is not a valid email address'
+            message: "The value is not a valid email address"
           }
         }
-      },
-    
+      }
     }
   };
   validatorOptions2 = {
     feedbackIcons: {
-      valid: 'glyphicon glyphicon-ok',
-      invalid: 'glyphicon glyphicon-remove',
-      validating: 'glyphicon glyphicon-refresh'
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh"
     },
     fields: {
       password: {
-        group: '.register-form',
+        group: ".register-form",
         validators: {
           notEmpty: {
-            message: 'The password is required'
+            message: "The password is required"
           },
           stringLength: {
             min: 8,
-            message: 'The password must be greater than 8 characters long'
+            message: "The password must be greater than 8 characters long"
           }
         }
       },
       email: {
-        group: '.register-form',
+        group: ".register-form",
         validators: {
           notEmpty: {
-            message: 'The email is required'
+            message: "The email is required"
           },
           emailAddress: {
-            message: 'The value is not a valid email address'
+            message: "The value is not a valid email address"
           }
         }
       },
       name: {
-        group: '.register-form',
+        group: ".register-form",
         validators: {
           notEmpty: {
-            message: 'The name is required'
+            message: "The name is required"
           },
           stringLength: {
             min: 4,
-            message: 'The name must be greater than 4 characters long'
+            message: "The name must be greater than 4 characters long"
           }
         }
-      },
+      }
     }
   };
-  constructor(private router: Router,private _flashMessagesService: FlashMessagesService) { }
+  constructor(
+    private router: Router,
+    private commonservice: CommonService,
+    private _flashMessagesService: FlashMessagesService
+  ) {}
 
   ngOnInit() {
-    if (localStorage.getItem('logged') === 'yes') {
-      this.router.navigate(['/home/dashboard'])
+    if (localStorage.getItem("logged") === "yes") {
+      this.router.navigate(["/home/dashboard"]);
     }
   }
 
   login(form) {
     console.log(form);
-    if(form.invalid){
-      this._flashMessagesService.show('Email or password is invalid!', { cssClass: 'alert-danger', timeout: 2000 });
+    if (form.invalid) {
+      this._flashMessagesService.show("Email or password is invalid!", {
+        cssClass: "alert-danger",
+        timeout: 2000
+      });
     } else {
-      localStorage.setItem('logged', 'yes');
-      this.router.navigate(['/home/dashboard']);
-    }
-  }
-  register(form){
-    console.log(form);
-    if(form.invalid){
-      this._flashMessagesService.show('Email or password is invalid!', { cssClass: 'alert-danger', timeout: 3000 });
-    } else {
-      localStorage.setItem('logged', 'yes');
-      this.router.navigate(['/home/dashboard']);
-      
-    }
-  }
+      const data = form.value;
+      this.commonservice.post("user/login", data).subscribe(res => {
 
+        if (res.user) {
+          delete res.user.password;
+          localStorage.setItem("user",JSON.stringify(res.user));
+          localStorage.setItem("login_token", res.token);
+          localStorage.setItem("logged", "yes");
+          this.router.navigate(["/home/dashboard"]);
+        } else {
+          
+        }
+      }, error => {
+        // console.log(error);
+        this._flashMessagesService.show("Email or password is invalid!", {
+          cssClass: "alert-danger",
+          timeout: 2000
+        });
+      });
+    }
+  }
+  register(form) {
+    console.log(form);
+    if (form.invalid) {
+      this._flashMessagesService.show("Email or password is invalid!", {
+        cssClass: "alert-danger",
+        timeout: 3000
+      });
+    } else {
+      localStorage.setItem("logged", "yes");
+      this.router.navigate(["/home/dashboard"]);
+    }
+  }
 }

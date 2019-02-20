@@ -30,8 +30,6 @@ export class CommonService {
     return throwError(error.error);
   }
   get(path: string): Observable<any> {
-    
-    console.log(path,"pathpathpathpathpathpath");
 
     if (this.login_token != '') {
       const headers = new HttpHeaders({ 'authorization': 'Token ' + this.login_token });
