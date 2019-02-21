@@ -18,7 +18,6 @@ import { SmartadminValidationModule } from '@app/shared/forms/validation/smartad
     FormsModule,
     SmartadminValidationModule,
     FlashMessagesModule.forRoot(),
-    
   ],
   declarations: [HomeComponent, ContactComponent, ForgotComponent, NotfoundComponent],
   exports: []

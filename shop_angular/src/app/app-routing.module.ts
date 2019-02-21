@@ -40,10 +40,10 @@ const routes: Routes = [
         data: { pageTitle: "E-commerce" }
       },
 
-
       {
         path: "forms",
-        loadChildren: "./features/forms/forms-showcase.module#FormsShowcaseModule",
+        loadChildren:
+          "./features/forms/forms-showcase.module#FormsShowcaseModule",
         data: { pageTitle: "Forms" }
       },
 
@@ -53,7 +53,6 @@ const routes: Routes = [
           "./features/graphs/graphs-showcase.module#GraphsShowcaseModule",
         data: { pageTitle: "Graphs" }
       },
-
 
       {
         path: "maps",
@@ -87,7 +86,8 @@ const routes: Routes = [
 
       {
         path: "ui",
-        loadChildren: "./features/ui-elements/ui-elements.module#UiElementsModule",
+        loadChildren:
+          "./features/ui-elements/ui-elements.module#UiElementsModule",
         data: { pageTitle: "Ui" }
       },
 
@@ -110,11 +110,14 @@ const routes: Routes = [
     component: HomeLayoutComponent,
     loadChildren: "./features/home/home.module#HomeModule"
   },
-  { path: "**", redirectTo: "miscellaneous/error404" }
+  //{ path: "**", redirectTo: "miscellaneous/error404" }
+  { path: "**", redirectTo: "home/notfound" }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false })],// <-- debugging purposes only
+  imports: [
+    RouterModule.forRoot(routes, { useHash: true, enableTracing: false })
+  ], // <-- debugging purposes only
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

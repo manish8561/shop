@@ -19,6 +19,8 @@ import { FheaderComponent } from '../../features/home/fheader/fheader.component'
 import { FfooterComponent } from '../../features/home/ffooter/ffooter.component';
 import { SidebarComponent } from '../../features/home/sidebar/sidebar.component';
 import { TooltipModule, BsDropdownModule } from "ngx-bootstrap";
+import {AccordionModule, CarouselModule} from "ngx-bootstrap";
+
 import { RouteBreadcrumbsComponent } from './ribbon/route-breadcrumbs.component';
 import { UtilsModule } from "../utils/utils.module";
 
@@ -35,6 +37,9 @@ import { UtilsModule } from "../utils/utils.module";
 
     TooltipModule,
     BsDropdownModule,
+    AccordionModule.forRoot(),
+
+    CarouselModule.forRoot(),
   ],
   declarations: [
     FooterComponent,

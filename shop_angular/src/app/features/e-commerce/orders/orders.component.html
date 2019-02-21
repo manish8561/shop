@@ -41,15 +41,18 @@
 
               <sa-datatable
                 [options]="{
-                  ajax: 'assets/api/e-commerce/orders.json',
+                  ajax: { 
+                    url: 'https://shopbackend-198646.herokuapp.com/order/get', 
+                    dataSrc:'order'
+                  },
                   columns: [
-                    {data: 'orderId'},
-                    {data: 'customerId'},
-                    {data: 'purchase'},
-                    {data: 'delivery'},
-                    {data: 'basePrice'},
-                    {data: 'postalZip'},
-                    {data: 'status'}
+                    {data: 'amazon_order_id'},
+                    {data: 'amazon_order_id'},
+                    {data: 'amount'},
+                    {data: 'phone'},
+                    {data: 'createdAt'},
+                    {data: 'status'},
+                    {data: 'orderBy'}
                   ]
               }"
                 filter="true" paginationLength="true"

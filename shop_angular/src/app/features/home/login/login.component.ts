@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
-    console.log(form);
+    // console.log(form);
     if (form.invalid) {
       this._flashMessagesService.show("Email or password is invalid!", {
         cssClass: "alert-danger",
@@ -108,36 +108,61 @@ export class LoginComponent implements OnInit {
       });
     } else {
       const data = form.value;
-      this.commonservice.post("user/login", data).subscribe(res => {
-
-        if (res.user) {
-          delete res.user.password;
-          localStorage.setItem("user",JSON.stringify(res.user));
-          localStorage.setItem("login_token", res.token);
-          localStorage.setItem("logged", "yes");
-          this.router.navigate(["/home/dashboard"]);
-        } else {
-          
+      this.commonservice.post("user/login", data).subscribe(
+        res => {
+          if (res.user) {
+            delete res.user.password;
+            localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("login_token", res.token);
+            localStorage.setItem("logged", "yes");
+            if (res.user.role === "admin") {
+              this.router.navigate(["/dashboard/analytics"]);
+            } else {
+              this.router.navigate(["/home/dashboard"]);
+            }
+          }
+        },
+        error => {
+          // console.log(error);
+          this._flashMessagesService.show("Email or password is invalid!", {
+            cssClass: "alert-danger",
+            timeout: 2000
+          });
         }
-      }, error => {
-        // console.log(error);
-        this._flashMessagesService.show("Email or password is invalid!", {
-          cssClass: "alert-danger",
-          timeout: 2000
-        });
-      });
+      );
     }
   }
   register(form) {
-    console.log(form);
     if (form.invalid) {
       this._flashMessagesService.show("Email or password is invalid!", {
         cssClass: "alert-danger",
         timeout: 3000
       });
     } else {
-      localStorage.setItem("logged", "yes");
-      this.router.navigate(["/home/dashboard"]);
+      const data = form.value;
+      this.commonservice.post("user/add", data).subscribe(
+        res => {
+          if (res.user) {
+            delete res.user.password;
+            localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("login_token", res.token);
+            localStorage.setItem("logged", "yes");
+            this.router.navigate(["/home/dashboard"]);
+          } else {
+            this._flashMessagesService.show("Email already exists!", {
+              cssClass: "alert-danger",
+              timeout: 2000
+            });
+          }
+        },
+        error => {
+          // console.log(error);
+          this._flashMessagesService.show("Email or password is invalid!", {
+            cssClass: "alert-danger",
+            timeout: 2000
+          });
+        }
+      );
     }
   }
 }

@@ -11,6 +11,9 @@ import { SmartadminWidgetsModule } from '@app/shared/widgets/smartadmin-widgets.
 import { StatsModule } from '@app/shared/stats/stats.module';
 import { SmartadminDatatableModule } from '@app/shared/ui/datatable/smartadmin-datatable.module';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +25,8 @@ import { SmartadminDatatableModule } from '@app/shared/ui/datatable/smartadmin-d
     StatsModule,
     SmartadminDatatableModule,
     CarouselModule,
-
+    FlashMessagesModule.forRoot(),
+    NgxUiLoaderModule,
   ],
   declarations: [
     ShoppingCartComponent,

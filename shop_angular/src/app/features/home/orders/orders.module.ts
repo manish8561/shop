@@ -8,12 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { AddComponent } from  './components/add.component';
 import { SmartadminValidationModule } from '@app/shared/forms/validation/smartadmin-validation.module';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
+
 @NgModule({
   imports: [    
     CommonModule,
     OrdersRoutingModule,
     FormsModule,
+    FlashMessagesModule.forRoot(),
     SmartadminValidationModule,
+    NgxUiLoaderModule,
   ],
   exports: [],
   declarations: [OrdersComponent, TermsModalComponent, AddComponent]
