@@ -20,6 +20,7 @@ import { FfooterComponent } from '../../features/home/ffooter/ffooter.component'
 import { SidebarComponent } from '../../features/home/sidebar/sidebar.component';
 import { TooltipModule, BsDropdownModule } from "ngx-bootstrap";
 import {AccordionModule, CarouselModule} from "ngx-bootstrap";
+import { AdsenseModule } from 'ng2-adsense';
 
 import { RouteBreadcrumbsComponent } from './ribbon/route-breadcrumbs.component';
 import { UtilsModule } from "../utils/utils.module";
@@ -40,6 +41,10 @@ import { UtilsModule } from "../utils/utils.module";
     AccordionModule.forRoot(),
 
     CarouselModule.forRoot(),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-5782411632338925',
+      adSlot: 5272207208,
+    }),
   ],
   declarations: [
     FooterComponent,

@@ -42,17 +42,25 @@
               <sa-datatable
                 [options]="{
                   ajax: { 
-                    url: 'https://shopbackend-198646.herokuapp.com/order/get', 
+                    url: url, 
                     dataSrc:'order'
                   },
+                  deferRender: true,
                   columns: [
                     {data: 'amazon_order_id'},
-                    {data: 'amazon_order_id'},
                     {data: 'amount'},
-                    {data: 'phone'},
-                    {data: 'createdAt'},
+                    {data: 'phone'},                    
                     {data: 'status'},
-                    {data: 'orderBy'}
+                    {data: 'remark'},
+                    {data: 'order_details'},
+                    {data: 'orderBy.name'},
+                    {data: 'createdAt'},
+                    {data: 'updatedAt'},
+                    {
+                      targets: -1,
+                      data: null,
+                      defaultContent: '<a href=\'/#/e-commerce/products-view\'>View!</a>'
+                  }
                   ]
               }"
                 filter="true" paginationLength="true"
@@ -61,39 +69,49 @@
                 <thead>
                 <tr>
                   <th class="hasinput" style="width:10%">
-                    <input type="text" class="form-control" placeholder="Find ID">
+                    <input type="text" class="form-control" placeholder="Find Order ID">
                   </th>
                   <th class="hasinput" style="width:12%">
-                    <input type="text" class="form-control" placeholder="Filter Cust ID">
+                    <input type="text" class="form-control" placeholder="Filter Amount">
                   </th>
+                  <th class="hasinput" style="width:12%">
+                      <input type="text" class="form-control" placeholder="Filter Phone">
+                  </th>
+                  <th class="hasinput" style="width:10%">
+                      <input type="text" class="form-control" placeholder="Status Filter">
+                    </th>
+                  
+                  <th class="hasinput" style="width:12%">
+                    
+                  </th>
+                  <th class="hasinput" style="width:10%">
+                    
+                  </th>
+                  <th class="hasinput" style="width:10%">
+                    
+                    </th>
                   <th class="hasinput icon-addon">
-                    <input id="dateselect_filter" type="text" placeholder="Purchase Date"
-                           class="form-control datepicker" data-dateformat="yy/mm/dd">
-                    <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15"
-                           rel="tooltip" title="" data-original-title="Purchase Date"></label>
-                  </th>
-                  <th class="hasinput">
-                    <input type="text" class="form-control" placeholder="Delivery Date">
-                  </th>
-                  <th class="hasinput" style="width:12%">
-                    <input type="text" class="form-control" placeholder="Base Price Filter">
-                  </th>
-                  <th class="hasinput" style="width:10%">
-                    <input type="text" class="form-control" placeholder="ZipCode Filter">
-                  </th>
-                  <th class="hasinput" style="width:10%">
-                    <input type="text" class="form-control" placeholder="Status Filter">
-                  </th>
-
+                      <input id="dateselect_filter" type="text" placeholder="Purchase Date"
+                             class="form-control datepicker" data-dateformat="yy/mm/dd">
+                      <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15"
+                             rel="tooltip" title="" data-original-title="Purchase Date"></label>
+                    </th>
+                    <th class="hasinput">
+                        <input type="text" class="form-control" placeholder="Delivery Date">
+                      </th>
+                    <th></th>
                 </tr>
                 <tr>
                   <th data-class="expand">Order ID</th>
-                  <th>Cust ID / Phn</th>
-                  <th data-hide="phone, tablet">Purchase</th>
-                  <th data-hide="phone, tablet">Delivery</th>
-                  <th data-hide="phone,tablet">Base Price</th>
-                  <th data-hide="phone,tablet">Postal/Zip</th>
-                  <th>Status</th>
+                  <th>Amount</th>
+                  <th data-hide="phone, tablet">Phone</th>
+                  <th >Status</th>
+                  <th data-hide="phone,tablet">Remark</th>
+                  <th data-hide="phone,tablet">Order Details</th>
+                  <th>Order By</th>
+                  <th data-hide="phone,tablet">Created</th>
+                  <th data-hide="phone,tablet">Updated</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
 

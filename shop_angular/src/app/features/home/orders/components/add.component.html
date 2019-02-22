@@ -1,6 +1,6 @@
 <div class="blog-post-area">
   <h2 class="title text-center">&nbsp;</h2>
-  <form id="attributeForm" (ngSubmit)="save(amazon_order_id.value, phone.value)" novalidate="novalidate" saBootstrapValidator class="form-horizontal"
+  <form id="attributeForm" (ngSubmit)="save(amazon_order_id.value, phone.value, order_details.value)" novalidate="novalidate" saBootstrapValidator class="form-horizontal"
     data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
     data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
@@ -13,12 +13,17 @@
     <fieldset>
       <flash-messages></flash-messages>
       <div class="form-group">
-        <label class="col-lg-3 control-label">Amazon Order ID</label>
-        <div class="col-lg-4">
+        <div class="col-md-6">
+          <label class="control-label">Amazon Order ID</label>
           <input #amazon_order_id type="text" class="form-control" name="amazon_order_id" placeholder="Amazon Order ID" data-bv-notempty="true"
-            data-bv-notempty-message="The Amazon Order ID is required and cannot be empty." maxlength="50" data-bv-stringlength-message="The Amazon Order ID is not more than 50 characters." />
-        </div>
-        <div class="col-lg-4">
+            data-bv-notempty-message="The Amazon Order ID or Order Details is required and cannot be empty." maxlength="50" data-bv-stringlength-message="The Amazon Order ID is not more than 50 characters." />
+            <h5>-OR-</h5>
+            <label class="control-label">Order Details</label>
+            <textarea #order_details class="form-control" name="order_details" placeholder="Enter products names or links of the order" 
+              maxlength="1000 " data-bv-stringlength-message="The order details is not more than 1000 characters."></textarea>
+        </div>        
+        <div class="col-md-6">
+            <label class="control-label">Paytem Mobile Number</label>
           <input #phone type="text" class="form-control" name="phone" placeholder="Paytm mobile number" data-bv-notempty="true"
             data-bv-notempty-message="The phone is required and cannot be empty." maxlength="13" minlength="10" data-bv-stringlength-message="The Phone number is between 10 - 13 characters." />
         </div>

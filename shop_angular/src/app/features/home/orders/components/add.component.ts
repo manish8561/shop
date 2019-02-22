@@ -21,15 +21,19 @@ export class AddComponent {
       this.loggedUser = JSON.parse(localStorage.getItem("user"));
     }
   }
-  save(amazon_order_id, phone) {
+  save(amazon_order_id, phone, order_details) {
     if (amazon_order_id.trim() !== "" && phone.trim() !== "") {
       console.log(amazon_order_id, phone);
 
-      const data = {
-        amazon_order_id: amazon_order_id,
-        phone: phone,
+      let data = {
+        amazon_order_id: amazon_order_id.trim(),
+        phone: phone.trim(),
+        order_details: amazon_order_id.trim(),
         orderBy: this.loggedUser["_id"]
       };
+      if(order_details.trim()){
+        data.order_details = order_details.trim();
+      }
       this.commonservice.post("order/add", data).subscribe(
         res => {
           this._flashMessagesService.show("Your order is successfully added.", {

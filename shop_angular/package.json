@@ -57,6 +57,7 @@
     "jquery.maskedinput": "1.4.1",
     "markdown": "0.5.0",
     "morris.js": "0.5.0",
+    "ng2-adsense": "^5.4.0",
     "ngx-bootstrap": "3.0.0",
     "ngx-popover": "0.0.16",
     "ngx-ui-loader": "^7.1.1",
