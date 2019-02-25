@@ -12,11 +12,11 @@
     <h3>Your Details</h3>
     <div class="post-meta">
       <ul>
-        <li><i class="fa fa-user"></i> {{loggedUser.name}}&nbsp;<a class="btn btn-sx btn-primary" routerLink="/home/edit" title="Edit"><i class="fa fa-pencil"></i></a></li>
+        <li><i class="fa fa-user"></i> {{loggedUser.name}}&nbsp;<a class="btn btn-sx btn-primary" routerLink="/home/dashboard/profile-edit" title="Edit"><i class="fa fa-pencil"></i></a></li>
         <li><i class="fa fa-envelope"></i> {{loggedUser.email}}</li>
         <li><i class="fa fa-phone"></i> {{loggedUser.phone}}</li>
         <li><i class="fa fa-calendar"></i> Join on {{loggedUser.createdAt|date:'yyyy-MM-dd HH:mm:ss'}}</li>
-        <li><i class="fa fa-key"></i> &nbsp;<a routerLink="/home/change-password" title="Change Password">Change Password</a></li>
+        <li><i class="fa fa-key"></i> &nbsp;<a routerLink="/home/dashboard/change-password" title="Change Password">Change Password</a></li>
       </ul>
     </div>
   
