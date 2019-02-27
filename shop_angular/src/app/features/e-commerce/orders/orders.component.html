@@ -32,13 +32,12 @@
           <header>
             <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
 
-            <h2>Widget Title </h2>
+            <h2>Orders</h2>
           </header>
           <!-- widget div-->
           <div>
             <!-- widget content -->
-            <div class="widget-body no-padding">
-
+            <div class="widget-body no-padding">             
               <sa-datatable
                 [options]="{
                   ajax: { 
@@ -47,6 +46,7 @@
                   },
                   deferRender: true,
                   columns: [
+                    {data:'_id'},
                     {data: 'amazon_order_id'},
                     {data: 'amount'},
                     {data: 'phone'},                    
@@ -55,12 +55,8 @@
                     {data: 'order_details'},
                     {data: 'orderBy.name'},
                     {data: 'createdAt'},
-                    {data: 'updatedAt'},
-                    {
-                      targets: -1,
-                      data: null,
-                      defaultContent: '<a href=\'/#/e-commerce/products-view\'>View!</a>'
-                  }
+                    {data: 'updatedAt'}
+                    
                   ]
               }"
                 filter="true" paginationLength="true"
@@ -102,6 +98,7 @@
                     <th></th>
                 </tr>
                 <tr>
+                  <th>#</th>
                   <th data-class="expand">Order ID</th>
                   <th>Amount</th>
                   <th data-hide="phone, tablet">Phone</th>
@@ -111,7 +108,6 @@
                   <th>Order By</th>
                   <th data-hide="phone,tablet">Created</th>
                   <th data-hide="phone,tablet">Updated</th>
-                  <th>Action</th>
                 </tr>
                 </thead>
 

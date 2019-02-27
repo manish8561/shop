@@ -10,14 +10,17 @@ import { delay, map, catchError } from 'rxjs/operators';
 })
 export class CommonService {
   login_token = '';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem("logged") === "yes") {
+      this.login_token= localStorage.getItem('login_token');
+    }
+  }
   private formatErrors(error: any) {
-
     if (error.status === 401) {
       // navigate /delete cookies or whatever
       console.log('handled error ' + error.status);
       // this.router.navigate(['/login']);
-      localStorage.removeItem('isLoggedin');
+      localStorage.removeItem('logged');
       localStorage.removeItem('user');
       localStorage.removeItem('login_token');
       document.location.reload();
@@ -30,7 +33,6 @@ export class CommonService {
     return throwError(error.error);
   }
   get(path: string): Observable<any> {
-
     if (this.login_token != '') {
       const headers = new HttpHeaders({ 'authorization': 'Token ' + this.login_token });
 

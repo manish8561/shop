@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { FlashMessagesService } from "angular2-flash-messages";
 
 import { CommonService } from "@app/core/services";
@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   orders:any;
   url=config.frontend_api_url+'order/get';
   constructor(private commonservice: CommonService,
+    private router: Router,
     private _flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
@@ -21,6 +22,15 @@ export class OrdersComponent implements OnInit {
       this.orders = res.order;
       console.log(this.orders);
     }); */
-  }
+    let that = this;
+    setTimeout(()=>{   
+      $('tbody td:first').click(function(){ 
+        // console.log(this);
+        const id = this.innerHTML;
+        that.router.navigate(['/e-commerce/order-update/'+id]);
+      });
+    }, 5000);
 
+  }
+  
 }
