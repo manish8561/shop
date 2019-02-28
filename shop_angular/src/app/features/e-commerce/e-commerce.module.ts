@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 import { UpdateComponent } from "./orders/update.component";
 import { UsersComponent } from "./users/users.component";
+import { UserUpdateComponent } from "./users/user-update.component";
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { UsersComponent } from "./users/users.component";
     UpdateComponent,
     ProductsViewComponent,
     ProductDetailsComponent,
-    UsersComponent
+    UsersComponent,
+    UserUpdateComponent
   ]
 })
 export class ECommerceModule {}

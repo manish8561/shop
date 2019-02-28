@@ -7,11 +7,11 @@ import { CommonService } from "@app/core/services";
 import { config } from "@app/core/smartadmin.config";
 
 @Component({
-  selector: "app-order-update",
-  templateUrl: "./update.component.html"
+  selector: "app-user-update",
+  templateUrl: "./user-update.component.html"
 })
-export class UpdateComponent implements OnInit {
-  order_id: any;
+export class UserUpdateComponent implements OnInit {
+  user_id: any;
   url = config.frontend_api_url + "order/get";
   constructor(
     private commonservice: CommonService,
@@ -21,7 +21,7 @@ export class UpdateComponent implements OnInit {
   ) {}
   public validationOptions = {
     rules : {
-      amazon_order_id : {
+      name : {
         required : true
       },
       ip : {
@@ -37,18 +37,15 @@ export class UpdateComponent implements OnInit {
       status : {
         required : true
       },
-      remark : {
+      password : {
         required : true
-      },
-      order_details : {
-        required : true,
       },
     },
 
     // Messages for form validation
     messages : {
-      amazon_order_id : {
-        required : 'Please enter your amazon order id'
+      name : {
+        required : 'Please enter name field'
       },
       ip : {
         required : 'Please enter your ip'
@@ -63,13 +60,9 @@ export class UpdateComponent implements OnInit {
       status : {
         required : 'Please select status'
       },
-      remark : {
-        required : 'Please enter remark'
-      },
-      order_details : {
-        required : 'Please enter order_details'
-      },
-     
+      password : {
+        required : 'Please enter password'
+      },     
     },
     submitHandler: this.save
 
@@ -78,9 +71,9 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
     /* get url variables */
     this.activatedroute.params.subscribe(params => {
-      this.order_id = params.id;
+      this.user_id = params.id;
     });
-    console.log(this.order_id);
+    console.log(this.user_id);
     /*  this.commonservice.get('order/get').subscribe(res=>{
       this.orders = res.order;
       console.log(this.orders);

@@ -6,6 +6,7 @@ import {ProductsViewComponent} from "./products-view/products-view.component";
 import {ProductDetailsComponent} from "./product-details/product-details.component";
 import { UpdateComponent } from "./orders/update.component";
 import { UsersComponent } from "./users/users.component";
+import { UserUpdateComponent } from "./users/user-update.component";
 
 export const routes:Routes = [
   {
@@ -19,6 +20,10 @@ export const routes:Routes = [
   {
     path: 'users',
     component: UsersComponent
+  },
+  {
+    path: 'user-update/:id',
+    component: UserUpdateComponent
   },
   {
     path: 'products-view',

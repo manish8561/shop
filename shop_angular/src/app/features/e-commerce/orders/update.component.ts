@@ -90,4 +90,7 @@ export class UpdateComponent implements OnInit {
     console.log('form submit');
     this.router.navigate(['/e-commerce/orders']);
   }
+  sendEmail(){
+    console.log('Send Email');
+  }
 }
