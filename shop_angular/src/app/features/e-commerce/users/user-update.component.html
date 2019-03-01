@@ -1,10 +1,10 @@
 <div id="content">
   <div class="row">
-     <sa-big-breadcrumbs
-        [items]="['E-Commerce', 'Order Update']"
-        icon="shopping-cart"
-        class="col-xs-12 col-sm-7 col-md-7 col-lg-4"
-        ></sa-big-breadcrumbs>
+    <sa-big-breadcrumbs
+      [items]="['E-Commerce', 'User Update']"
+      icon="shopping-cart"
+      class="col-xs-12 col-sm-7 col-md-7 col-lg-4"
+    ></sa-big-breadcrumbs>
   </div>
   <!--
      The ID "widget-grid" will start to initialize all widgets below
@@ -13,13 +13,13 @@
      -->
   <!-- widget grid -->
   <sa-widgets-grid>
-     <!-- row -->
-     <div class="row">
-        <!-- NEW WIDGET START -->
-        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-           <!-- Widget ID (each widget will need unique ID)-->
-           <div sa-widget class="well">
-              <!-- widget options:
+    <!-- row -->
+    <div class="row">
+      <!-- NEW WIDGET START -->
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div sa-widget class="well">
+          <!-- widget options:
                  usage: <div sa-widget id="wid-id-0" [editbutton]="false">
                  [colorbutton]="false"
                  [editbutton]="false"
@@ -30,104 +30,115 @@
                  [collapsed]="true"
                  [sortable]="false"
                  -->
-              <header>
-                 <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-                 <h2>User Update</h2>
-              </header>
-              <!-- widget div-->
-              <div>
-                 <!-- widget content -->
-                 <div class="widget-body no-padding">
-                    <form
-                       id="checkout-form"
-                       class="smart-form"
-                       [saUiValidate]="validationOptions"
-                       novalidate="novalidate"
-                       >
-                       <fieldset>
-                          <div class="row">
-                             <section class="col col-6">
-                                <label class="input">
-                                <i class="icon-prepend fa fa-user"></i>
-                                <input
-                                   type="text"
-                                   name="name"
-                                   placeholder="Enter name"
-                                   />
-                                </label>
-                             </section>
-                             <section class="col col-6">
-                                <label class="input">
-                                <i class="icon-prepend fa fa-user"></i>
-                                <input type="text" name="ip" placeholder="IP" />
-                                </label>
-                             </section>
-                          </div>
-                          <div class="row">
-                             <section class="col col-4">
-                                <label class="input">
-                                <i class="icon-prepend fa fa-envelope-o"></i>
-                                <input type="email" name="email" placeholder="E-mail" />
-                                </label>
-                             </section>
-                             <section class="col col-4">
-                              <label class="input">
-                              <i class="icon-prepend fa fa-key"></i>
-                              <input type="password" name="password" placeholder="Password" />
-                              </label>
-                           </section>
-                             <section class="col col-4">
-                                <label class="input">
-                                <i class="icon-prepend fa fa-phone"></i>
-                                <input
-                                   type="tel"
-                                   name="phone"
-                                   placeholder="Phone"
-                                   data-smart-masked-input="(91) 9999999999"
-                                   />
-                                </label>
-                             </section>
-                          </div>
-                       </fieldset>
-                       <fieldset>
-                          <div class="row">
-                             <section class="col col-6">
-                                <label class="select">
-                                   <select name="status">
-                                      <option value="active" selected="">Active</option>
-                                      <option value="inactive" selected=""
-                                         >inactive</option
-                                         >
-                                      <option value="blocked" selected="">Blocked</option>
-                                      <option value="processing" selected="">Processing</option>
-                                   </select>
-                                   <i></i>
-                                </label>
-                             </section>
-                             <section class="col col-6">
-                                <label class="input">Created At: manish</label>
-                             </section>
-                          </div>
-                       </fieldset>
-                       <footer>
-                          <button type="submit" class="btn btn-primary">
-                          Save
-                          </button>
-                          <a routerLink="/e-commerce/users" class="btn btn-danger"
-                             >Cancel</a
-                             >
-                       </footer>
-                    </form>
-                 </div>
-                 <!-- end widget content -->
-              </div>
-              <!-- end widget div -->
-           </div>
-           <!-- end widget -->
-        </article>
-        <!-- WIDGET END -->
-     </div>
-     <!-- end row -->
+          <header>
+            <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+            <h2>User Update</h2>
+          </header>
+          <!-- widget div-->
+          <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form
+                id="checkout-form"
+                class="smart-form"
+                #userForm="ngForm" (ngSubmit)="save(userForm)"
+                [saUiValidate]="validationOptions"
+                novalidate="novalidate" 
+              >
+                <fieldset>
+                     <flash-messages></flash-messages>
+                  <div class="row">
+                    <section class="col col-4">
+                      <label class="input">
+                        <i class="icon-prepend fa fa-user"></i>
+                        <input type="text" name="name" placeholder="Enter name" [(ngModel)]="user.name" required />
+                      </label>
+                    </section>
+                    <section class="col col-4">
+                      <label class="input">
+                        <i class="icon-prepend fa fa-user"></i>
+                        <input type="text" name="ip" placeholder="IP" [(ngModel)]="user.ip" />
+                      </label>
+                    </section>
+                    <section class="col col-4">
+                     <label class="input">
+                       <i class="icon-prepend fa fa-money"></i>
+                       <input type="text" name="balance" placeholder="Balance Amount" [(ngModel)]="user.balance" />
+                     </label>
+                   </section>
+                  </div>
+                  <div class="row">
+                    <section class="col col-4">
+                      <label class="input">
+                        <i class="icon-prepend fa fa-envelope-o"></i>
+                        <input type="email" name="email" placeholder="E-mail" [(ngModel)]="user.email" required />
+                      </label>
+                    </section>
+                    <section class="col col-4">
+                      <label class="input">
+                        <i class="icon-prepend fa fa-key"></i>
+                        <input
+                          type="password"
+                          name="password"
+                          placeholder="Password" ngModel
+                        />
+                      </label>
+                    </section>
+                    <section class="col col-4">
+                      <label class="input">
+                        <i class="icon-prepend fa fa-phone"></i>
+                        <input type="tel" name="phone" placeholder="Phone" data-smart-masked-input="(91) 9999999999" [(ngModel)]="user.phone" required />
+                      </label>
+                    </section>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <div class="row">
+                    <section class="col col-4">
+                      <label class="select">
+                        <select name="status" [(ngModel)]="user.status">
+                          <option value="active" [selected]="user.status === 'active'">Active</option>
+                          <option value="inactive" [selected]="user.status === 'inactive'">Inactive</option>
+                          <option value="blocked" [selected]="user.status === 'blocked'">Blocked</option>
+                          <option value="processing" [selected]="user.status === 'processing'">Processing</option>
+                        </select>
+                        <i></i>
+                      </label>
+                    </section>
+                    <section class="col col-4">
+                     <label class="select">
+                       <select name="role" [(ngModel)]="user.role">
+                         <option value="customer" [selected]="user.role === 'customer'">Customer</option>
+                         <option value="admin" [selected]="user.role === 'admin'">Admin</option>
+                         <option value="guest" [selected]="user.role === 'guest'">Guest</option>
+                       </select>
+                       <i></i>
+                     </label>
+                   </section>
+                    <section class="col col-4">
+                      <label class="input">Created At: {{user.createdAt}}</label>
+                    </section>
+                  </div>
+                </fieldset>
+                <footer>
+                  <button type="submit" class="btn btn-primary">
+                    Save
+                  </button>
+                  <a routerLink="/e-commerce/users" class="btn btn-danger"
+                    >Cancel</a
+                  >
+                </footer>
+              </form>
+            </div>
+            <!-- end widget content -->
+          </div>
+          <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+      </article>
+      <!-- WIDGET END -->
+    </div>
+    <!-- end row -->
   </sa-widgets-grid>
   <!-- end widget grid -->
 </div>

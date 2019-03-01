@@ -43,8 +43,8 @@ export class UsersComponent implements OnInit {
       { prop: "email" },
       { prop: "role" },
       { prop: "ip" },
-      /* { prop: "phone" },
-      { prop: "status" }, */
+      { prop: "phone" }, 
+      { prop: "status" },
       { prop: "balance" },
       { prop: "createdAt", name:"Added" },
       { prop: "updatedAt" },

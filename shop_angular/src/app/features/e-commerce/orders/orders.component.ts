@@ -24,7 +24,7 @@ export class OrdersComponent implements OnInit {
     }); */
     let that = this;
     setTimeout(()=>{   
-      $('tbody td:first').click(function(){ 
+      $('.sorting_1').click(function(){ 
         // console.log(this);
         const id = this.innerHTML;
         that.router.navigate(['/e-commerce/order-update/'+id]);

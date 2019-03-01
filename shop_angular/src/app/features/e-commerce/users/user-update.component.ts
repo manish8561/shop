@@ -12,6 +12,7 @@ import { config } from "@app/core/smartadmin.config";
 })
 export class UserUpdateComponent implements OnInit {
   user_id: any;
+  public user:any = {};
   url = config.frontend_api_url + "order/get";
   constructor(
     private commonservice: CommonService,
@@ -38,7 +39,7 @@ export class UserUpdateComponent implements OnInit {
         required : true
       },
       password : {
-        required : true
+        
       },
     },
 
@@ -59,10 +60,7 @@ export class UserUpdateComponent implements OnInit {
       },
       status : {
         required : 'Please select status'
-      },
-      password : {
-        required : 'Please enter password'
-      },     
+      }   
     },
     submitHandler: this.save
 
@@ -73,14 +71,25 @@ export class UserUpdateComponent implements OnInit {
     this.activatedroute.params.subscribe(params => {
       this.user_id = params.id;
     });
-    console.log(this.user_id);
-    /*  this.commonservice.get('order/get').subscribe(res=>{
-      this.orders = res.order;
-      console.log(this.orders);
-    }); */
+    this.commonservice.get('user/get/'+ this.user_id).subscribe(res => {
+      this.user= res.user;
+      
+    });
   }
-  save(){
-    console.log('form submit');
-    this.router.navigate(['/e-commerce/orders']);
+  save(form){    
+    //console.log(form,'form submit');
+    if(form.invalid){
+      this._flashMessagesService.show("There is some error while updating.", {
+        cssClass: "alert-danger",
+        timeout: 2000
+      });
+    } else {
+      const data = form.value;
+      this.commonservice.put("user/update/"+this.user_id,data).subscribe(res=>{
+        if(res.user){
+          this.router.navigate(['/e-commerce/users']);
+        }       
+      });
+    }
   }
 }

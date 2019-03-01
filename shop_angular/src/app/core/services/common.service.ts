@@ -13,6 +13,7 @@ export class CommonService {
   constructor(private http: HttpClient) {
     if (localStorage.getItem("logged") === "yes") {
       this.login_token= localStorage.getItem('login_token');
+      console.log(localStorage.getItem('login_token'));
     }
   }
   private formatErrors(error: any) {
@@ -23,7 +24,7 @@ export class CommonService {
       localStorage.removeItem('logged');
       localStorage.removeItem('user');
       localStorage.removeItem('login_token');
-      document.location.reload();
+      //document.location.reload();
       // this.router.navigate(['/']);
       // return false;
       // if you've caught / handled the error, you don't want to rethrow it 
@@ -33,6 +34,7 @@ export class CommonService {
     return throwError(error.error);
   }
   get(path: string): Observable<any> {
+    console.log(this.login_token);
     if (this.login_token != '') {
       const headers = new HttpHeaders({ 'authorization': 'Token ' + this.login_token });
 
