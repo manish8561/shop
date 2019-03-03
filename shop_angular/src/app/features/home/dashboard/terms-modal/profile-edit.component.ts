@@ -30,10 +30,13 @@ export class ProfileEditComponent implements OnInit {
       });
     } else {
       const data = form.value;
-      console.log(data);
-    /*  this.commonservice.get('user/get').subscribe(res=>{
-      console.log(res);
-    }); */
+      // console.log(data);
+      
+      this.commonservice.put('user/update/'+this.loggedUser['_id'], data).subscribe(res=>{
+        if(res.user){
+          this.router.navigate(['/home/dashboard']);
+        }
+      }); 
     }
   }
 }

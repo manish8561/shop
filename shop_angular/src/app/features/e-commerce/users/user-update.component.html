@@ -97,10 +97,10 @@
                     <section class="col col-4">
                       <label class="select">
                         <select name="status" [(ngModel)]="user.status">
-                          <option value="active" [selected]="user.status === 'active'">Active</option>
-                          <option value="inactive" [selected]="user.status === 'inactive'">Inactive</option>
-                          <option value="blocked" [selected]="user.status === 'blocked'">Blocked</option>
-                          <option value="processing" [selected]="user.status === 'processing'">Processing</option>
+                          <option value="active">Active</option>
+                          <option value="inactive">Inactive</option>
+                          <option value="blocked">Blocked</option>
+                          <option value="processing">Processing</option>
                         </select>
                         <i></i>
                       </label>
@@ -108,9 +108,9 @@
                     <section class="col col-4">
                      <label class="select">
                        <select name="role" [(ngModel)]="user.role">
-                         <option value="customer" [selected]="user.role === 'customer'">Customer</option>
-                         <option value="admin" [selected]="user.role === 'admin'">Admin</option>
-                         <option value="guest" [selected]="user.role === 'guest'">Guest</option>
+                         <option value="customer">Customer</option>
+                         <option value="admin">Admin</option>
+                         <option value="guest">Guest</option>
                        </select>
                        <i></i>
                      </label>

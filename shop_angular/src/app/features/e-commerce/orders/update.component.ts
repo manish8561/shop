@@ -12,6 +12,7 @@ import { config } from "@app/core/smartadmin.config";
 })
 export class UpdateComponent implements OnInit {
   order_id: any;
+  order:any = {};
   url = config.frontend_api_url + "order/get";
   constructor(
     private commonservice: CommonService,
@@ -27,9 +28,8 @@ export class UpdateComponent implements OnInit {
       ip : {
         required : true
       },
-      email : {
+      amount : {
         required : true,
-        email : true
       },
       phone : {
         required : true
@@ -53,9 +53,8 @@ export class UpdateComponent implements OnInit {
       ip : {
         required : 'Please enter your ip'
       },
-      email : {
-        required : 'Please enter your email address',
-        email : 'Please enter a VALID email address'
+      amount : {
+        required : 'Please order amount',        
       },
       phone : {
         required : 'Please enter your phone number'
@@ -81,13 +80,12 @@ export class UpdateComponent implements OnInit {
       this.order_id = params.id;
     });
     console.log(this.order_id);
-    /*  this.commonservice.get('order/get').subscribe(res=>{
-      this.orders = res.order;
-      console.log(this.orders);
-    }); */
+    this.commonservice.get('order/get/'+this.order_id).subscribe(res=>{
+      this.order = res.order;
+    });
   }
-  save(){
-    console.log('form submit');
+  save(form){
+    console.log('form submit',form);
     this.router.navigate(['/e-commerce/orders']);
   }
   sendEmail(){

@@ -28,7 +28,7 @@ export class LogoutComponent implements OnInit {
     this.notificationService.smartMessageBox(
       {
         title:
-          "<i class='fa fa-sign-out txt-color-orangeDark'></i> Logout <span class='txt-color-orangeDark'><strong>" + this.userService.user$.value.username+"</strong></span> ?",
+          "<i class='fa fa-sign-out txt-color-orangeDark'></i> Logout <span class='txt-color-orangeDark'><strong>" + this.userService.loggedUser.name+"</strong></span> ?",
         content:
           "You can improve your security further after logging out by closing this opened browser",
         buttons: "[No][Yes]"
@@ -43,7 +43,7 @@ export class LogoutComponent implements OnInit {
 
   logout() {
     this.userService.logout()
-    this.router.navigate(["/auth/login"]);
+    this.router.navigate(["/home/login"]);
   }
 
   ngOnInit() {}

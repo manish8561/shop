@@ -30,6 +30,8 @@ export class FheaderComponent implements OnInit {
   logout() {
     this.loggedin = false;
     localStorage.removeItem('logged');
+    localStorage.removeItem('user');
+    localStorage.removeItem('login_token');
     this.router.navigate(['/home/login']);
   }
   refresh(){
