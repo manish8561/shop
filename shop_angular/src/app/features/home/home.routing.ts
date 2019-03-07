@@ -8,7 +8,8 @@ import { NotfoundComponent } from './errors/notfound.component';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: './main/main.module#MainModule'
+    loadChildren: './main/main.module#MainModule',
+    pathMatch:'full'
   },
   {
     path: 'main',
@@ -53,4 +54,4 @@ export const routes: Routes = [
 
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const routing = [RouterModule.forChild(routes)];
