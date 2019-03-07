@@ -86,9 +86,30 @@ export class UpdateComponent implements OnInit {
   }
   save(form){
     console.log('form submit',form);
-    this.router.navigate(['/e-commerce/orders']);
+   
+    if(form.invalid){
+      this._flashMessagesService.show("There is some error while updating.", {
+        cssClass: "alert-danger",
+        timeout: 2000
+      });
+    } else {
+      const data = form.value;
+      this.commonservice.put("order/update/"+this.order_id,data).subscribe(res=>{
+        if(res.order){
+          this.router.navigate(['/e-commerce/orders']);
+        }       
+      });
+    }
   }
   sendEmail(){
-    console.log('Send Email');
+    this.commonservice.get("order/sendEmail/"+this.order_id).subscribe(res=>{
+      if(res.order){
+        this._flashMessagesService.show("Email is send successfully.", {
+          cssClass: "alert-success",
+          timeout: 2000
+        });
+        // this.router.navigate(['/e-commerce/orders']);
+      }       
+    });
   }
 }

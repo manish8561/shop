@@ -1,10 +1,7 @@
 <div id="content">
   <div class="row">
-    <sa-big-breadcrumbs
-      [items]="['E-Commerce', 'User Update']"
-      icon="shopping-cart"
-      class="col-xs-12 col-sm-7 col-md-7 col-lg-4"
-    ></sa-big-breadcrumbs>
+    <sa-big-breadcrumbs [items]="['E-Commerce', 'User Update']" icon="shopping-cart"
+      class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
   </div>
   <!--
      The ID "widget-grid" will start to initialize all widgets below
@@ -38,15 +35,10 @@
           <div>
             <!-- widget content -->
             <div class="widget-body no-padding">
-              <form
-                id="checkout-form"
-                class="smart-form"
-                #userForm="ngForm" (ngSubmit)="save(userForm)"
-                [saUiValidate]="validationOptions"
-                novalidate="novalidate" 
-              >
+              <form id="checkout-form" class="smart-form" #userForm="ngForm" (ngSubmit)="save(userForm)"
+                [saUiValidate]="validationOptions" novalidate="novalidate">
                 <fieldset>
-                     <flash-messages></flash-messages>
+                  <flash-messages></flash-messages>
                   <div class="row">
                     <section class="col col-4">
                       <label class="input">
@@ -61,11 +53,11 @@
                       </label>
                     </section>
                     <section class="col col-4">
-                     <label class="input">
-                       <i class="icon-prepend fa fa-money"></i>
-                       <input type="text" name="balance" placeholder="Balance Amount" [(ngModel)]="user.balance" />
-                     </label>
-                   </section>
+                      <label class="input">
+                        <i class="icon-prepend fa fa-money"></i>
+                        <input type="text" name="balance" placeholder="Balance Amount" [(ngModel)]="user.balance" />
+                      </label>
+                    </section>
                   </div>
                   <div class="row">
                     <section class="col col-4">
@@ -77,17 +69,14 @@
                     <section class="col col-4">
                       <label class="input">
                         <i class="icon-prepend fa fa-key"></i>
-                        <input
-                          type="password"
-                          name="password"
-                          placeholder="Password" ngModel
-                        />
+                        <input type="password" name="password" placeholder="Password" ngModel />
                       </label>
                     </section>
                     <section class="col col-4">
                       <label class="input">
                         <i class="icon-prepend fa fa-phone"></i>
-                        <input type="tel" name="phone" placeholder="Phone" data-smart-masked-input="(91) 9999999999" [(ngModel)]="user.phone" required />
+                        <input type="tel" name="phone" placeholder="Phone" data-smart-masked-input="(91) 9999999999"
+                          [(ngModel)]="user.phone" required />
                       </label>
                     </section>
                   </div>
@@ -106,15 +95,15 @@
                       </label>
                     </section>
                     <section class="col col-4">
-                     <label class="select">
-                       <select name="role" [(ngModel)]="user.role">
-                         <option value="customer">Customer</option>
-                         <option value="admin">Admin</option>
-                         <option value="guest">Guest</option>
-                       </select>
-                       <i></i>
-                     </label>
-                   </section>
+                      <label class="select">
+                        <select name="role" [(ngModel)]="user.role">
+                          <option value="customer">Customer</option>
+                          <option value="admin">Admin</option>
+                          <option value="guest">Guest</option>
+                        </select>
+                        <i></i>
+                      </label>
+                    </section>
                     <section class="col col-4">
                       <label class="input">Created At: {{user.createdAt}}</label>
                     </section>
@@ -124,9 +113,7 @@
                   <button type="submit" class="btn btn-primary">
                     Save
                   </button>
-                  <a routerLink="/e-commerce/users" class="btn btn-danger"
-                    >Cancel</a
-                  >
+                  <a routerLink="/e-commerce/users" class="btn btn-danger">Cancel</a>
                 </footer>
               </form>
             </div>

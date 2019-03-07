@@ -36,6 +36,11 @@ export class ChangePasswordComponent implements OnInit {
           timeout: 2000
         });
       } else {
+        this.commonservice.put('user/update_password/'+this.loggedUser['_id'],data).subscribe(res=>{
+          if(res.user){
+            this.router.navigate(['home/dashboard']);
+          }
+        });
         console.log(data);
       }
       

@@ -12,55 +12,55 @@ import { config } from "@app/core/smartadmin.config";
 })
 export class UserUpdateComponent implements OnInit {
   user_id: any;
-  public user:any = {};
+  public user: any = {};
   url = config.frontend_api_url + "order/get";
   constructor(
     private commonservice: CommonService,
     private _flashMessagesService: FlashMessagesService,
     private router: Router,
     private activatedroute: ActivatedRoute
-  ) {}
+  ) { }
   public validationOptions = {
-    rules : {
-      name : {
-        required : true
+    rules: {
+      name: {
+        required: true
       },
-      ip : {
-        required : true
+      ip: {
+        required: true
       },
-      email : {
-        required : true,
-        email : true
+      email: {
+        required: true,
+        email: true
       },
-      phone : {
-        required : true
+      phone: {
+        required: true
       },
-      status : {
-        required : true
+      status: {
+        required: true
       },
-      password : {
-        
+      password: {
+
       },
     },
 
     // Messages for form validation
-    messages : {
-      name : {
-        required : 'Please enter name field'
+    messages: {
+      name: {
+        required: 'Please enter name field'
       },
-      ip : {
-        required : 'Please enter your ip'
+      ip: {
+        required: 'Please enter your ip'
       },
-      email : {
-        required : 'Please enter your email address',
-        email : 'Please enter a VALID email address'
+      email: {
+        required: 'Please enter your email address',
+        email: 'Please enter a VALID email address'
       },
-      phone : {
-        required : 'Please enter your phone number'
+      phone: {
+        required: 'Please enter your phone number'
       },
-      status : {
-        required : 'Please select status'
-      }   
+      status: {
+        required: 'Please select status'
+      }
     },
     submitHandler: this.save
 
@@ -71,24 +71,23 @@ export class UserUpdateComponent implements OnInit {
     this.activatedroute.params.subscribe(params => {
       this.user_id = params.id;
     });
-    this.commonservice.get('user/get/'+ this.user_id).subscribe(res => {
-      this.user= res.user;
-      
+    this.commonservice.get('user/get/' + this.user_id).subscribe(res => {
+      this.user = res.user;
     });
   }
-  save(form){    
+  save(form) {
     //console.log(form,'form submit');
-    if(form.invalid){
+    if (form.invalid) {
       this._flashMessagesService.show("There is some error while updating.", {
         cssClass: "alert-danger",
         timeout: 2000
       });
     } else {
       const data = form.value;
-      this.commonservice.put("user/update/"+this.user_id,data).subscribe(res=>{
-        if(res.user){
+      this.commonservice.put("user/update/" + this.user_id, data).subscribe(res => {
+        if (res.user) {
           this.router.navigate(['/e-commerce/users']);
-        }       
+        }
       });
     }
   }
